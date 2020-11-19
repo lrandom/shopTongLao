@@ -10,7 +10,7 @@ package models;
  * @author Lrandom
  */
 public class CartItemSandalLao {
-     public int quantity = 0;
+     public int quantity = 1;
      public SandalLao sandalLao;
 
     public int getQuantity() {

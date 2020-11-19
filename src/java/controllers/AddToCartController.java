@@ -8,18 +8,19 @@ package controllers;
 import dals.DalSandalLao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Cart;
+import models.CartItemSandalLao;
 import models.SandalLao;
 
 /**
  *
  * @author Lrandom
  */
-public class HomeServlet extends HttpServlet {
+public class AddToCartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class HomeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeServlet</title>");            
+            out.println("<title>Servlet CartController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,12 +61,19 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        DalSandalLao dalSandalLao= new DalSandalLao();
-        ArrayList<SandalLao>  sandalLaos = dalSandalLao.getAll();
-        request.setAttribute("list", sandalLaos);
+        Long id = new Long(request.getParameter("id"));
+        
+        
+        DalSandalLao dalSandalLao = new DalSandalLao();
+        SandalLao sandalLao =(SandalLao)dalSandalLao.getOne(id);
         dalSandalLao.closeConnect();
-        request.setAttribute("test", true);
-        request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        Cart cart = new Cart(request.getSession());
+        CartItemSandalLao cartItemSandalLao = new CartItemSandalLao();
+        cartItemSandalLao.setQuantity(1);
+        cartItemSandalLao.setSandalLao(sandalLao);
+        cart.addToCart(cartItemSandalLao);
+        
+        response.sendRedirect("/shopTongLao/checkout");
     }
 
     /**

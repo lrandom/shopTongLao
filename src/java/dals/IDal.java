@@ -14,6 +14,6 @@ import models.Model;
  */
 public interface IDal {
      public ArrayList<? extends Model> getAll();
-     public Model getOne();
+     public Model getOne(Long id);
    
 }
