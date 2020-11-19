@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package services;
 
 import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
+import models.CartItemSandalLao;
 
 /**
  *
