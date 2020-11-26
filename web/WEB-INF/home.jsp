@@ -9,8 +9,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="sw" uri="/WEB-INF/tlds/utils.tld"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <fmt:setLocale value="vi-VN"/>
+<fmt:bundle basename="bundle.main"/>
 <!DOCTYPE html>
 <html>  
     <jsp:include page="commons/nav.jsp"/>
@@ -43,6 +45,10 @@
         </div>
 
 
+        <sw:BlockSwearWord content="Hello, fuck, mother fucker, hi">
+            
+        </sw:BlockSwearWord> 
+            
         <footer style="text-align:center">Copyright 2020 NIIT JAVA 16</footer>
     </body>
     

@@ -11,6 +11,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <fmt:setLocale value="vi-VN"/>
+<fmt:bundle basename="bundle.main"/>
 <!DOCTYPE html>
 <html>  
     <jsp:include page="commons/nav.jsp"/>
